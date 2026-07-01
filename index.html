@@ -150,7 +150,7 @@
             <div class="about-grid">
                 <div>
                     <h2>About StudyHub</h2>
-                    <p>StudyHub is your all-in-one academic platform. Connect with expert tutors, access premium study materials, and stay on top of university events — all in one place.</p>
+                    <p>StudyHub is your all-in-one academic platform. Connect with expert tutors, access premium study materials, and stay on top of university events all in one place.</p>
                     <p style="margin-top:12px;">Whether you're a student looking for help or a tutor ready to share your knowledge, StudyHub brings the academic community together.</p>
                 </div>
                 <div class="about-stats">
@@ -181,7 +181,7 @@
     </footer>
 
     <!-- ================================================================
-    MODAL: LOGIN / SIGN UP
+    LOGIN / SIGN UP
     ================================================================ -->
     <div class="modal-overlay" id="loginModal">
         <div class="modal">
@@ -233,7 +233,7 @@
     </div>
 
     <!-- ================================================================
-    MODAL: ROLE SELECTION (POST-LOGIN)
+    ROLE SELECTION (POST-LOGIN)
     ================================================================ -->
     <div class="modal-overlay" id="roleModal">
         <div class="modal">
@@ -269,16 +269,12 @@
     JAVASCRIPT
     ================================================================ -->
     <script>
-        // ================================================================
-        // NAVBAR TOGGLE (mobile)
-        // ================================================================
+   
         function toggleNav() {
             document.getElementById('navLinks').classList.toggle('open');
         }
 
-        // ================================================================
-        // MODAL CONTROLS
-        // ================================================================
+       
         function showLoginModal() {
             document.getElementById('loginModal').classList.add('open');
             switchAuthTab('login');
@@ -373,9 +369,7 @@
             el._t = setTimeout(() => el.classList.remove('show'), 3000);
         }
 
-        // ================================================================
-        // CLOSE MODALS ON OVERLAY CLICK
-        // ================================================================
+       
         document.getElementById('loginModal').addEventListener('click', function(e) {
             if (e.target === this) hideLoginModal();
         });
@@ -383,9 +377,7 @@
             if (e.target === this) hideRoleModal();
         });
 
-        // ================================================================
-        // KEYBOARD SHORTCUT: ESC to close modals
-        // ================================================================
+      
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 hideLoginModal();
@@ -393,9 +385,7 @@
             }
         });
 
-        // ================================================================
-        // INIT: Hide modals on load
-        // ================================================================
+     
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('loginModal').classList.remove('open');
             document.getElementById('roleModal').classList.remove('open');
