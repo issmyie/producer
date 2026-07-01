@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutor Dashboard</title>
+    <title>StudyHub · Tutor Dashboard</title>
     <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
@@ -14,14 +14,17 @@
         <aside class="sidebar">
             <div class="sidebar-brand">
                 <span class="brand-icon">📘</span>
-                <span>TutorFlow</span>
+                <span>StudyHub</span>
             </div>
             <nav class="sidebar-nav">
                 <a href="#" class="active">
                     <span class="nav-icon">📊</span> Dashboard
                 </a>
                 <a href="#">
-                    <span class="nav-icon">📅</span> Calendar
+                    <span class="nav-icon">📈</span> Booking Stats
+                </a>
+                <a href="#">
+                    <span class="nav-icon">⭐</span> Reviews
                 </a>
                 <a href="#">
                     <span class="nav-icon">👥</span> Students
@@ -99,14 +102,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" value="jane@tutor.me" />
+                                <input type="email" id="email" value="jane@studyhub.me" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="bio">Bio</label>
-                            <textarea id="bio">I tutor.</textarea>
+                            <textarea id="bio">Mathematics tutor with 6 years of experience. Specializing in calculus, algebra, and test prep.</textarea>
                         </div>
-                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hourlyRate">Hourly rate ($)</label>
+                                <input type="number" id="hourlyRate" value="45" min="0" />
                             </div>
                             <div class="form-group">
                                 <label for="timezone">Timezone</label>
@@ -208,7 +214,6 @@
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-
     <script>
         // ================================================================
         // DATA
@@ -225,8 +230,8 @@
             { name: 'Student A', course: 'Algebra II', level: 'Grade 10' },
             { name: 'Student B', course: 'Calculus I', level: 'College' },
             { name: 'Student C', course: 'Geometry', level: 'Grade 9' },
-            { name: 'STudent D', course: 'Trigonometry', level: 'Grade 11' },
-            { name: 'Student E', course: 'Statistics', level: 'College' },
+            { name: 'Student D', course: 'Trigonometry', level: 'Grade 11' },
+            { name: 'Student E', course: 'Statistics', level: 'College' }
         ];
 
         const demandData = [
@@ -234,7 +239,7 @@
             { course: 'Algebra II', count: 12 },
             { course: 'Statistics', count: 9 },
             { course: 'Geometry', count: 5 },
-            { course: 'Trigonometry', count: 3 },
+            { course: 'Trigonometry', count: 3 }
         ];
         const maxDemand = Math.max(...demandData.map(d => d.count));
 
@@ -259,11 +264,6 @@
             return fmtDate(date.getFullYear(), date.getMonth(), date.getDate());
         }
 
-        function parseDate(str) {
-            const parts = str.split('-').map(Number);
-            return new Date(parts[0], parts[1] - 1, parts[2]);
-        }
-
         function isSameDay(d1, d2) {
             return d1.getFullYear() === d2.getFullYear() &&
                 d1.getMonth() === d2.getMonth() &&
@@ -280,10 +280,6 @@
 
         function getSlots(dateStr) {
             return availMap.get(dateStr) || new Set();
-        }
-
-        function hasSlots(dateStr) {
-            return getSlots(dateStr).size > 0;
         }
 
         // ================================================================
@@ -527,7 +523,7 @@
             availMap.clear();
             generateRandomAvailability();
             document.getElementById('fullName').value = 'Jane Doe';
-            document.getElementById('email').value = 'jane@tutor.me';
+            document.getElementById('email').value = 'jane@studyhub.me';
             document.getElementById('bio').value = 'Mathematics tutor with 6 years of experience. Specializing in calculus, algebra, and test prep.';
             document.getElementById('hourlyRate').value = '45';
             document.getElementById('timezone').value = 'GMT';
@@ -555,13 +551,13 @@
                         timezone: document.getElementById('timezone').value,
                     }
                 };
-                localStorage.setItem('tutorDashboardData', JSON.stringify(data));
+                localStorage.setItem('studyHubData', JSON.stringify(data));
             } catch (_) { /* ignore */ }
         }
 
         function loadFromLocalStorage() {
             try {
-                const raw = localStorage.getItem('tutorDashboardData');
+                const raw = localStorage.getItem('studyHubData');
                 if (!raw) return false;
                 const data = JSON.parse(raw);
                 if (data.courses) courses = data.courses;
