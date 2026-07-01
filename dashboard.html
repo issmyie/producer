@@ -115,11 +115,11 @@
         let courses = ['Algebra I', 'Algebra II', 'Calculus I', 'Calculus II', 'Geometry', 'Trigonometry', 'Statistics', 'Linear Algebra'];
         const availMap = new Map();
         const students = [
-            { name: 'Student A', course: 'Algebra II', level: 'Grade 10' },
-            { name: 'Student B', course: 'Calculus I', level: 'College' },
-            { name: 'Student C', course: 'Geometry', level: 'Grade 9' },
-            { name: 'Student D', course: 'Trigonometry', level: 'Grade 11' },
-            { name: 'Student E', course: 'Statistics', level: 'College' }
+            { name: 'Student A', course: 'Algebra II', level: 'Freshman' },
+            { name: 'Student B', course: 'Calculus I', level: 'Freshman' },
+            { name: 'Student C', course: 'Geometry', level: 'Sophomore' },
+            { name: 'Student D', course: 'Trigonometry', level: 'Junior' },
+            { name: 'Student E', course: 'Statistics', level: 'Senior' }
         ];
         const demandData = [{ course: 'Calculus I', count: 18 }, { course: 'Algebra II', count: 12 }, { course: 'Statistics', count: 9 }, { course: 'Geometry', count: 5 }, { course: 'Trigonometry', count: 3 }];
         const maxDemand = Math.max(...demandData.map(d => d.count));
